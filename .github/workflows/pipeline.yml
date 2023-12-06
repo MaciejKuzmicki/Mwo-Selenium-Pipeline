@@ -42,8 +42,3 @@ jobs:
 
       - name: Publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
-
-  
-	
-
-
