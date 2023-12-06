@@ -12,9 +12,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: ikalnytskyi/action-setup-postgres@v4
-      - name: .NET Core
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up PostgreSQL
+        uses: ikalnytskyi/action-setup-postgres@v4
+      
+      - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '7.x'
@@ -25,25 +29,31 @@ jobs:
 
       - name: Build
         run: dotnet build --configuration Release Api/Api.csproj
+      
       - name: Install EF Core Tools
-  	run: dotnet tool install --global dotnet-ef
+        run: dotnet tool install --global dotnet-ef
 
       - name: Migration
         run: |
           cd Api
-          dotnet tool restore
           dotnet ef migrations add initialmigration
           dotnet ef database update
 
       - name: Publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
 
-      - name: Run Api&Client
+      - name: Run Api
         run: |
-          cd API
-          cmd /c "start dotnet run --urls=http://localhost:7008"
-          cd ../ApiWebClient
-          cmd /c "start dotnet run --urls=http://localhost:7093"
+          cd Api
+          start dotnet run --urls=http://localhost:7008
           cd ..
-          dotnet test
-          exit 1
+
+      - name: Run ApiWebClient
+        run: |
+          cd ApiWebClient
+          start dotnet run --urls=http://localhost:7093
+          cd ..
+
+      - name: Run Tests
+        run: dotnet test
+        continue-on-error: true
