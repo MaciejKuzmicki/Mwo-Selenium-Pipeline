@@ -1,18 +1,17 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using Xunit;
 
-namespace Selenium
+namespace TestProject1
 {
     public class UnitTest1
     {
-
         private readonly IWebDriver _driver;
+
 
         public UnitTest1()
         {
-	    ChromeOptions options = new ChromeOptions();
+            ChromeOptions options = new ChromeOptions();
 
             options.AddArguments("ignore-certificate-errors");
             _driver = new ChromeDriver(options);
@@ -21,7 +20,7 @@ namespace Selenium
         [Fact]
         public void testRead()
         {
-	    Thread.Sleep(5000);
+            Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -45,8 +44,8 @@ namespace Selenium
         [Fact]
         public void create()
         {
-            
-	    Thread.Sleep(5000);
+
+            Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -73,7 +72,7 @@ namespace Selenium
         [Fact]
         public void UpdateTest()
         {
-	    Thread.Sleep(5000);
+            Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -116,13 +115,13 @@ namespace Selenium
             Assert.Contains("Test Book Updated", lastBookTitle);
             _driver.Quit();
 
-            
+
         }
 
         [Fact]
         public void TestBookDeletion()
         {
-	    Thread.Sleep(5000);
+            Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -155,11 +154,10 @@ namespace Selenium
 
             var finalBookCardCount = _driver.FindElements(By.ClassName("card")).Count;
 
-            Assert.Equal(initialBookCardCount-1, finalBookCardCount);
+            Assert.Equal(initialBookCardCount - 1, finalBookCardCount);
             _driver.Quit();
 
         }
-
 
     }
 }
