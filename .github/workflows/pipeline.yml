@@ -21,10 +21,10 @@ jobs:
           include-prerelease: true
 
       - name: Restore Api Dependencies
-        run: dotnet restore /Api/Api.csproj
+        run: dotnet restore Api/Api.csproj
 
       - name: Build
-        run: dotnet build --configuration Release /Api/Api.csproj
+        run: dotnet build --configuration Release Api/Api.csproj
 
       - name: Migration
         run: |
@@ -34,7 +34,7 @@ jobs:
           dotnet ef database update
 
       - name: Publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result /Api/Api.csproj
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
 
       - name: Run Api&Client
         run: |
