@@ -21,6 +21,7 @@ namespace Selenium
         [Fact]
         public void testRead()
         {
+	    Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -45,7 +46,7 @@ namespace Selenium
         public void create()
         {
             
-
+	    Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -72,6 +73,7 @@ namespace Selenium
         [Fact]
         public void UpdateTest()
         {
+	    Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
@@ -120,6 +122,7 @@ namespace Selenium
         [Fact]
         public void TestBookDeletion()
         {
+	    Thread.Sleep(5000);
             _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
