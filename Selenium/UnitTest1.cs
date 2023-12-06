@@ -14,7 +14,7 @@ namespace Selenium
         {
 	    ChromeOptions options = new ChromeOptions();
 
-            options.AddArgument("--ignore-certificate-errors");
+            options.AddArguments("ignore-certificate-errors");
             _driver = new ChromeDriver(options);
         }
 
