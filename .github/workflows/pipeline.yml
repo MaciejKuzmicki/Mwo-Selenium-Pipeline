@@ -33,7 +33,6 @@ jobs:
       - name: Install Compatible EF Core Tools
         run: dotnet tool install --global dotnet-ef --version 6.0.0
 
-
       - name: Migration
         run: |
           cd Api
@@ -42,8 +41,9 @@ jobs:
 
       - name: Publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
+
       - name: Run Apps
-  	run: |
+        run: |
           cd Api
           start cmd /c "dotnet run --urls=http://localhost:7008"
           cd ../ApiWebClient
