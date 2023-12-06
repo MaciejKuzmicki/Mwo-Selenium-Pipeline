@@ -44,12 +44,13 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
 
       - name: Run Api
-        run: |
-          cd Api
-          cmd /c "start dotnet run --urls=http://localhost:7008"
+  	run: |
+    	  cd Api
+          start cmd /c "dotnet run --urls=http://localhost:7008"
           cd ../ApiWebClient
-          cmd /c "start dotnet run --urls=http://localhost:7093"
+          start cmd /c "dotnet run --urls=http://localhost:7093"
           cd ../Selenium
-	  dotnet test
-	  exit 1
+          dotnet test
+          exit 1
+
 
