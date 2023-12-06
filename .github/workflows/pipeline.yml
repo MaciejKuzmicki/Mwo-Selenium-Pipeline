@@ -37,7 +37,7 @@ jobs:
         run: dotnet build --configuration Release ApiWebClient/ApiWebClient.csproj
 
       - name: Restore Test Dependencies
-        run: dotnet restore Selenium/Selenium.csproj
+        run: dotnet restore TestProject1/TestProject1.csproj
 
       - name: Build
         run: dotnet build --configuration Release TestProject1/TestProject1.csproj
