@@ -47,11 +47,9 @@ jobs:
         run: |
           cd Api
           cmd /c "start dotnet run --urls=http://localhost:7008"
-          cd ..
-	  cd ApiWebClient
+          cd ../ApiWebClient
           cmd /c "start dotnet run --urls=http://localhost:7093"
-          cd ..
-	  cd Selenium
+          cd ../Selenium
 	  dotnet test
 	  exit 1
 
