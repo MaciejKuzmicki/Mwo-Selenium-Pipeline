@@ -52,7 +52,7 @@ jobs:
       - name: Run ApiWebClient
         run: |
           cd ApiWebClient
-          dotnet run --urls=http://localhost:7093
+          cmd /c "start dotnet run --urls=http://localhost:7093"
           cd ..
 
       - name: Run Tests
