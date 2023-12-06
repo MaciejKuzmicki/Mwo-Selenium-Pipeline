@@ -29,6 +29,18 @@ jobs:
 
       - name: Build
         run: dotnet build --configuration Release Api/Api.csproj
+
+      - name: Restore MVC Dependencies
+        run: dotnet restore ApiWebClient/ApiWebClient.csproj
+
+      - name: Build
+        run: dotnet build --configuration Release ApiWebClient/ApiWebClient.csproj
+
+      - name: Restore Test Dependencies
+        run: dotnet restore Selenium/Selenium.csproj
+
+      - name: Build
+        run: dotnet build --configuration Release Selenium/Selenium.csproj
       
       - name: Install Compatible EF Core Tools
         run: dotnet tool install --global dotnet-ef --version 6.0.0
