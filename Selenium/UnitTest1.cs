@@ -19,6 +19,12 @@ namespace Selenium
         }
 
         [Fact]
+        public void tru()
+        {
+            Assert.True(true);
+        }
+
+        [Fact]
         public void testRead()
         {
 	    Thread.Sleep(5000);
