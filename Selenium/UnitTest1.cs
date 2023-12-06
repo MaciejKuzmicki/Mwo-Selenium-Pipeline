@@ -12,8 +12,12 @@ namespace Selenium
 
         public UnitTest1()
         {
-            _driver = new ChromeDriver();
+	    ChromeOptions options = new ChromeOptions();
+
+            options.AddArgument("--ignore-certificate-errors");
+            _driver = new ChromeDriver(options);
         }
+
         [Fact]
         public void testRead()
         {
