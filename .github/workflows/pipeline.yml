@@ -45,9 +45,9 @@ jobs:
       - name: Run Apps
         run: |
           cd Api
-          cmd /c "dotnet run --urls=http://localhost:7008"
+          cmd /c "start dotnet run --urls=http://localhost:7008"
           cd ../ApiWebClient
-          cmd /c "dotnet run --urls=http://localhost:7093"
+          cmd /c "start dotnet run --urls=http://localhost:7093"
           cd ../Selenium
           dotnet test
           exit 1
