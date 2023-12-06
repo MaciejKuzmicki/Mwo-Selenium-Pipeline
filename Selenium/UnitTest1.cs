@@ -22,7 +22,7 @@ namespace Selenium
         public void testRead()
         {
 	    Thread.Sleep(5000);
-            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            _driver.Navigate().GoToUrl("https://localhost:5117/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
             var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
@@ -33,9 +33,9 @@ namespace Selenium
 
             var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
             submitButton.Click();
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
             //read
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
 
             var cards = _driver.FindElements(By.ClassName("card"));
             Assert.NotNull(cards);
@@ -47,7 +47,7 @@ namespace Selenium
         {
             
 	    Thread.Sleep(5000);
-            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            _driver.Navigate().GoToUrl("https://localhost:5117/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
             var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
@@ -58,7 +58,7 @@ namespace Selenium
 
             var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
             submitButton.Click();
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
             var bookCards = _driver.FindElements(By.ClassName("card"));
 
             var newlyAddedBookCard = bookCards.FirstOrDefault(card => card.FindElement(By.ClassName("card-title")).Text == "Test Book Title");
@@ -74,7 +74,7 @@ namespace Selenium
         public void UpdateTest()
         {
 	    Thread.Sleep(5000);
-            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            _driver.Navigate().GoToUrl("https://localhost:5117/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
             var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
@@ -85,9 +85,9 @@ namespace Selenium
 
             var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
             submitButton.Click();
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
             //update
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
 
             var initialBookCardCount = _driver.FindElements(By.ClassName("card")).Count;
             var wait3 = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
@@ -106,7 +106,7 @@ namespace Selenium
             var saveButton = _driver.FindElement(By.CssSelector("input[type='submit'][value='Save']"));
             saveButton.Click();
 
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
             var bookCards = _driver.FindElements(By.ClassName("card"));
 
             var newlyAddedBookCard = bookCards.FirstOrDefault(card => card.FindElement(By.ClassName("card-title")).Text == "Test Book Updated");
@@ -123,7 +123,7 @@ namespace Selenium
         public void TestBookDeletion()
         {
 	    Thread.Sleep(5000);
-            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            _driver.Navigate().GoToUrl("https://localhost:5117/Api/Create");
             var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
             titleInput.SendKeys("Test Book Title");
             var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
@@ -134,10 +134,10 @@ namespace Selenium
 
             var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
             submitButton.Click();
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
             Thread.Sleep(25000);
             //delete
-            _driver.Navigate().GoToUrl("https://localhost:7093/");
+            _driver.Navigate().GoToUrl("https://localhost:5117/");
 
             var initialBookCardCount = _driver.FindElements(By.ClassName("card")).Count;
             var wait3 = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
