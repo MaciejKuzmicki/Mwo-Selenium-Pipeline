@@ -17,7 +17,18 @@ namespace Selenium
         [Fact]
         public void testRead()
         {
-            
+            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
+            titleInput.SendKeys("Test Book Title");
+            var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
+            descriptionInput.SendKeys("Test Book Description");
+
+            var authorDropdown = new SelectElement(_driver.FindElement(By.Id("authorId")));
+            authorDropdown.SelectByText("Phil Dibbert");
+
+            var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
+            submitButton.Click();
+            _driver.Navigate().GoToUrl("https://localhost:7093/");
             //read
             _driver.Navigate().GoToUrl("https://localhost:7093/");
 
@@ -57,6 +68,18 @@ namespace Selenium
         [Fact]
         public void UpdateTest()
         {
+            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
+            titleInput.SendKeys("Test Book Title");
+            var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
+            descriptionInput.SendKeys("Test Book Description");
+
+            var authorDropdown = new SelectElement(_driver.FindElement(By.Id("authorId")));
+            authorDropdown.SelectByText("Phil Dibbert");
+
+            var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
+            submitButton.Click();
+            _driver.Navigate().GoToUrl("https://localhost:7093/");
             //update
             _driver.Navigate().GoToUrl("https://localhost:7093/");
 
@@ -93,6 +116,18 @@ namespace Selenium
         [Fact]
         public void TestBookDeletion()
         {
+            _driver.Navigate().GoToUrl("https://localhost:7093/Api/Create");
+            var titleInput = _driver.FindElement(By.CssSelector("input[name='Book.Title']"));
+            titleInput.SendKeys("Test Book Title");
+            var descriptionInput = _driver.FindElement(By.CssSelector("input[name='Book.Description']"));
+            descriptionInput.SendKeys("Test Book Description");
+
+            var authorDropdown = new SelectElement(_driver.FindElement(By.Id("authorId")));
+            authorDropdown.SelectByText("Phil Dibbert");
+
+            var submitButton = _driver.FindElement(By.CssSelector("input[type='submit']"));
+            submitButton.Click();
+            _driver.Navigate().GoToUrl("https://localhost:7093/");
             Thread.Sleep(25000);
             //delete
             _driver.Navigate().GoToUrl("https://localhost:7093/");
