@@ -21,7 +21,7 @@ jobs:
       - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.x'
+          dotnet-version: '7.x'
           include-prerelease: true
 
       - name: Restore Api Dependencies
@@ -37,13 +37,13 @@ jobs:
         run: dotnet build --configuration Release ApiWebClient/ApiWebClient.csproj
 
       - name: Restore Test Dependencies
-        run: dotnet restore Selenium/Selenium.csproj
+        run: dotnet restore TestProject1/TestProject1.csproj
 
       - name: Build
-        run: dotnet build --configuration Release Selenium/Selenium.csproj
+        run: dotnet build --configuration Release TestProject1/TestProject1.csproj
       
       - name: Install Compatible EF Core Tools
-        run: dotnet tool install --global dotnet-ef --version 6.0.0
+        run: dotnet tool install --global dotnet-ef --version 7.0.0
 
       - name: Migration
         run: |
@@ -60,6 +60,6 @@ jobs:
           cmd /c "start dotnet run --urls=http://localhost:5071"
           cd ../ApiWebClient
           cmd /c "start dotnet run --urls=http://localhost:5117"
-          cd ../Selenium
+          cd ../TestProject1
           dotnet test
           exit 1
