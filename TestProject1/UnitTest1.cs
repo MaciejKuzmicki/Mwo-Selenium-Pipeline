@@ -13,7 +13,7 @@ namespace TestProject1
         {
             ChromeOptions options = new ChromeOptions();
 
-            options.AddArguments("ignore-certificate-errors");
+            options.AddArgument("--ignore-certificate-errors");
             _driver = new ChromeDriver(options);
         }
 

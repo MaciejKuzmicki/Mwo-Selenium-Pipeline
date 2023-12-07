@@ -54,6 +54,13 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/result Api/Api.csproj
 
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+          chrome-version: 'latest'
+          chromedriver-version: 'latest'
+
+
       - name: Run Apps
         run: |
           cd Api
