@@ -72,16 +72,17 @@ jobs:
           exit 1
 
       - name: Ticket
-        uses: stefanstranger/azuredevops-bug-action@1.1
         if: failure()
-        with:
-          OrganizationName: "01169583"
-          PAT: "PAT"
-          ProjectName: "Zaj_1"
-          AreaPath: "Zaj_1"
-          IterationPath: "Zaj_1"
-          GithubToken: "GithubToken"
-          WorkflowFileName: "pipeline.yml"
+        run: |
+          echo '[{
+            "op": "add",
+            "path": "/fields/System.Title",
+            "from": null,
+            "value": "Tests failed"
+          }]' > bug.json
+          echo "Azure DevOps Token: $AZURE_DEVOPS_TOKEN"
+          echo "API URL: https://dev.azure.com/01169583/Zaj_1/_apis/wit/workitems/$Bug?api-version=7.1-preview.3"
+          curl -g -X POST -H "Content-Type: application/json-patch+json" -H "Authorization: Basic ${{ secrets.PAT }}" --data "@bug.json" "https://dev.azure.com/01169583/Zaj_1/_apis/wit/workitems/%24Issue?api-version=7.1-preview.3" -o response.json
+          cat response.json
         env:
-          PAT: ${{ secrets.PAT}}
-          GithubToken: ${{ secrets.githubtoken}}
+          AZURE_DEVOPS_TOKEN: ${{ secrets.PAT }}
