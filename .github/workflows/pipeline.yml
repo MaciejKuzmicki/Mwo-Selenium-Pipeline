@@ -82,6 +82,6 @@ jobs:
           }]' > bug.json
           echo "Azure DevOps Token: $AZURE_DEVOPS_TOKEN"
           echo "API URL: https://dev.azure.com/01169583/Zaj_1/_apis/wit/workitems/\$Issue?api-version=7.1-preview.3"
-          curl -g -X POST -H "Content-Type: application/json-patch+json" -H "Authorization: Basic ${{ secrets.AZURE_CREDENTIALS }}" --data "@ticket.json" "https://dev.azure.com/01169583/Zaj_1/_apis/wit/workitems/%24Issue?api-version=7.1-preview.3" -o response.json
+          curl -g -X POST -H "Content-Type: application/json-patch+json" -H "Authorization: Basic ${{ secrets.AZURE_CREDENTIALS }}" --data "@bug.json" "https://dev.azure.com/01169583/Zaj_1/_apis/wit/workitems/%24Issue?api-version=7.1-preview.3" -o response.json
         env:
           AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_CREDENTIALS }}
